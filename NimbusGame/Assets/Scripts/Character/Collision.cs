@@ -22,6 +22,7 @@ public class Collision : MonoBehaviour
 	public float collisionRadius = 0.25f;
 	//Esto va a cambiar depende del sprite
 	public Vector2 bottomOffset,rightOffset, leftOffset;
+	private Color debugCollisionColor = Color.red;
 
 	void Start()
 	{
