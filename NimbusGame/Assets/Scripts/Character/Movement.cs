@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
 	private Collision coll;
 	//Modificar las fisicas y el movimiento
 	private Rigidbody2D rb;
+	//Para cambiar la animación
+	private Animator animator;
 	
 	//Lo que dice... Stats
 	[Space]
@@ -39,6 +41,8 @@ public class Movement : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		//Obtiene quien actualiza las colisiones
 		coll = GetComponent<Collision>();
+		//Obtiene el elemento que anima
+		animator = GetComponent<Animator>();
 	}
 	
 	void Update()
@@ -132,13 +136,18 @@ public class Movement : MonoBehaviour
 		//Cambiar la dirección del sprite y de la variable side
 		if(x > 0)
 		{
-			side = 1;
-			//GIrar sprite
+			side = -1;
+			Vector3 scale = transform.localScale;
+			scale.x = side;
+			transform.localScale = scale;
 		}
 		if (x < 0)
 		{
-			side = -1;
-			//Girar sprite
+			//Se gira el sprite
+			side = 1;
+			Vector3 scale = transform.localScale;
+			scale.x = side;
+			transform.localScale = scale;
 		}
 
 
