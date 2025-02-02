@@ -15,8 +15,8 @@ public class Movement : MonoBehaviour
 	//Lo que dice... Stats
 	[Space]
 	[Header("Stats")]
-	public float speed = 10;
-	public float jumpForce = 10;
+	public float speed = 6;
+	public float jumpForce = 15;
 	public float slideSpeed = 5;
 	public float wallJumpLerp = 10;
 	public float dashSpeed = 20;
@@ -43,6 +43,12 @@ public class Movement : MonoBehaviour
 		coll = GetComponent<Collision>();
 		//Obtiene el elemento que anima
 		animator = GetComponent<Animator>();
+	}
+	//En lugar de llamarse cada frame, se llama de forma fija.
+	private void FixedUpdate()
+	{
+		//Cambia las variables de la animación, para activar la animación
+		animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
 	}
 	
 	void Update()
